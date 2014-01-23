@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+	
+	<bean id="themeResolver" class="com.answer1991.spring.view.theme.MyThemeResolver">
+		<property name="themeTypeMap">
+			<map>
+				<entry key="blue" value="blue"></entry>
+			</map>
+		</property>
+	</bean>
+	
+	<bean id="themeSource" class="org.springframework.ui.context.support.ResourceBundleThemeSource">
+		<property name="basenamePrefix" value="/theme"></property>
+	</bean>
+</beans>

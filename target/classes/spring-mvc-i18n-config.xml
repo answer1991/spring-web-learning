@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+
+	<bean id="zh_CN_Locale" class="org.springframework.util.StringUtils" factory-method="parseLocaleString">
+		<constructor-arg value="zh_CN" />
+	</bean>
+	
+	<bean id="en_US_Locale" class="org.springframework.util.StringUtils" factory-method="parseLocaleString">
+		<constructor-arg value="en_US" />
+	</bean>
+
+	<bean id="localeMapping" class="com.answer1991.i18n.LocaleMapping">
+		<property name="innerMap">
+			<map>
+				<entry key-ref="zh_CN_Locale" value="cn"></entry>
+				<entry key-ref="en_US_Locale" value="us"></entry>
+			</map>
+		</property>
+		<property name="defaultValue" value="us"></property>
+	</bean>
+	
+	<bean id="localeResolver" class="com.answer1991.i18n.MyLocaleResolver">
+		<property name="cookieName" value="clientLanguage"></property>
+		<property name="cookieMaxAge" value="100000"></property>
+	</bean>
+</beans>
